@@ -1,0 +1,22 @@
+name: Bash check
+on:
+  push:
+  pull_request:
+
+jobs:
+  bash-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # Layer 1 — syntax: fast bash -n parse on every shell script
+      - name: Syntax (bash -n)
+        run: |
+          find . -name '*.sh' -not -path './.git/*' \
+            | xargs --no-run-if-empty bash -n
+
+      # Layer 2 — lint: static analysis via shellcheck
+      - name: Lint (shellcheck)
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: '.'

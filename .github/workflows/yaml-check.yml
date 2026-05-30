@@ -1,0 +1,14 @@
+name: YAML check
+on:
+  push:
+  pull_request:
+
+jobs:
+  yaml-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      # Layer 1 (syntax) + Layer 2 (yamllint) — both run inside the script.
+      # yamllint is pre-installed on ubuntu-latest; no install step needed.
+      - name: YAML check
+        run: bash scripts/yaml-check.sh

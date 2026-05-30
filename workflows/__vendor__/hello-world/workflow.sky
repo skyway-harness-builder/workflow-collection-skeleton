@@ -1,0 +1,31 @@
+※※
+# hello-world
+
+Starter workflow for **__vendor_name__**. Replace this with your first automation.
+
+  (manual run)
+       │
+       ▼
+   ┌─────────┐
+   │  greet  │  bash — prints a greeting and exits
+   └─────────┘
+
+Run:
+  sky run hello-world
+※※
+
+⊕meta⊕
+name = "hello-world"
+description = "Starter workflow — prints a greeting. Replace with your first real automation."
+trigger.manual = true
+output_style = "terse"
+⊕⊕
+
+※※
+Step 1 — greet. Pure bash; no LLM tokens. Replace the script with whatever
+your workflow actually needs to do.
+※※
+
+§greet§
+bash_file = "./scripts/run.sh"
+§§
