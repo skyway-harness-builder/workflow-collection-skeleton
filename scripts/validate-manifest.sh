@@ -19,8 +19,8 @@ ERRORS=0
 err() { echo "  ERROR $*" >&2; ERRORS=$((ERRORS + 1)); }
 
 # ── apiVersion ────────────────────────────────────────────────────────────────
-if ! grep -q "^apiVersion: skylence\.io/v1$" "$MANIFEST"; then
-  err "apiVersion must be 'skylence.io/v1'"
+if ! grep -q "^apiVersion: skylence\.be/v1$" "$MANIFEST"; then
+  err "apiVersion must be 'skylence.be/v1'"
 fi
 
 # ── path values exist on disk ─────────────────────────────────────────────────

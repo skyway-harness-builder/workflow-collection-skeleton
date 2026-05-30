@@ -1,70 +1,55 @@
-# __vendor_name__ Workflows
+# __package_description__
 
 [![Sky lint](https://github.com/__github_org__/__repo_name__/actions/workflows/sky-lint.yml/badge.svg)](https://github.com/__github_org__/__repo_name__/actions/workflows/sky-lint.yml)
 [![YAML check](https://github.com/__github_org__/__repo_name__/actions/workflows/yaml-check.yml/badge.svg)](https://github.com/__github_org__/__repo_name__/actions/workflows/yaml-check.yml)
 [![Bash check](https://github.com/__github_org__/__repo_name__/actions/workflows/bash-check.yml/badge.svg)](https://github.com/__github_org__/__repo_name__/actions/workflows/bash-check.yml)
 
-A [Skylence](https://skylence.io) workflow library by **__author_name__**.
-
+<!--delete-->
 ---
+This repo can be used to scaffold a Skylence workflow library. Follow these steps to get started:
 
-> **This is a generated repo.** It was bootstrapped from
-> [skylence-be/workflow-skeleton](https://github.com/skylence-be/workflow-skeleton).
-> Delete this notice once you've configured the library.
-
+1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
+2. Run `bash configure.sh` to replace all placeholders throughout all the files.
+3. Add your workflows under `workflows/<vendor>/` and register them in `manifest.yaml`.
+4. Have fun automating things with `.sky` workflows.
 ---
+<!--/delete-->
 
-## Install
+This is where your description should go. Limit it to a paragraph or two.
+
+## Installation
+
+Install this workflow library via the `sky` CLI:
 
 ```bash
 sky library add __github_org__/__repo_name__
 ```
 
-Then run any workflow:
+## Workflows
+
+| Name | Trigger | Description |
+|------|---------|-------------|
+| `hello-world` | manual | Starter workflow — replace with your first automation |
+
+Run a workflow:
 
 ```bash
 sky run hello-world
 ```
 
-## Structure
+## Changelog
 
-```
-workflows/
-└── __vendor__/         ← your vendor namespace
-    └── hello-world/
-        ├── scripts/    ← bash helpers
-        └── workflow.sky
-manifest.yaml           ← registry of all workflows and skills
-scripts/
-└── validate-manifest.sh
-```
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-One workflow per directory. Add more workflows, register them in `manifest.yaml`, and the CI gates will keep everything in sync.
+## Contributing
 
-## Adding a workflow
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-1. Create a directory under `workflows/__vendor__/<name>/`
-2. Write `workflow.sky` (see [sky format reference](https://skylence.io/docs/sky-format))
-3. Add an entry to `manifest.yaml`
-4. Run `bash scripts/validate-manifest.sh` to check for drift
-5. Commit — `lefthook` lints the `.sky` file before the commit lands
+## Credits
 
-## CI
-
-Three layered gates run on every push and pull request:
-
-| Workflow | Layer 1 | Layer 2 |
-|----------|---------|---------|
-| `sky-lint.yml` | `sky lint` on `.sky` files | manifest drift check |
-| `yaml-check.yml` | `yaml.safe_load` syntax | `yamllint` style |
-| `bash-check.yml` | `bash -n` syntax | `shellcheck` static analysis |
-
-`lefthook` mirrors the fast layers locally so broken files never reach the remote.
-
-## Author
-
-__author_name__ — __author_email__
+- [__author_name__](https://github.com/__author_username__)
+- [All Contributors](../../contributors)
 
 ## License
 
-<!-- Add a LICENSE file and update this section. -->
+Please see [License File](LICENSE.md) for more information.
