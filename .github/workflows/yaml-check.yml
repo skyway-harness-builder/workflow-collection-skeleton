@@ -5,7 +5,7 @@ on:
 
 jobs:
   yaml-check:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
       # Layer 1 (syntax) + Layer 2 (yamllint) — both run inside the script.

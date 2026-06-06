@@ -5,7 +5,7 @@ on:
 
 jobs:
   sky-lint:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
       - uses: skylence-be/sky-lint-action@v2
@@ -13,7 +13,7 @@ jobs:
           paths: "**/*.sky"
 
   manifest-validate:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
       - name: Validate manifest.yaml
