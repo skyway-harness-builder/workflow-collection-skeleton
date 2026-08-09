@@ -2,7 +2,7 @@
 # validate-manifest.sh — validate manifest.yaml against the on-disk tree.
 #
 # Checks:
-#   - apiVersion is skylence.io/v1
+#   - apiVersion is skylence.be/v1
 #   - path values in entries exist on disk
 #   - kind values are workflow / skill / command
 #   - scripts paths (if declared) exist on disk

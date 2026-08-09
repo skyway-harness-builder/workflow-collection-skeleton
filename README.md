@@ -25,6 +25,22 @@ Install this workflow library via the `sky` CLI:
 sky library add __github_org__/__repo_name__
 ```
 
+### Getting listed
+
+skylence.be lists public collections it can discover. Two signals get you there,
+and the repo needs at least one:
+
+- the `sky-workflow` topic on the repo, which `configure.sh` sets for you (topics
+  are not copied from a template, so a fresh collection has none until it is set)
+- a root `manifest.yaml` declaring `apiVersion: skylence.be/v1`, which this
+  template ships and every collection needs anyway
+
+If you skipped `configure.sh` or it could not reach the remote:
+
+```bash
+gh repo edit --add-topic sky-workflow
+```
+
 ## Workflows
 
 | Name | Trigger | Description |

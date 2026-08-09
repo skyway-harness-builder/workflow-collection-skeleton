@@ -74,6 +74,10 @@ REPO_NAME=$(ask    "GitHub repo name"                      "${_inferred_repo:-my
 GITHUB_ORG=$(ask   "GitHub org / user"                     "${_inferred_org:-my-org}")
 DESCRIPTION=$(ask  "Library description"                   "A collection of .sky workflows by ${VENDOR_NAME}")
 
+# Topic that gets a published collection discovered and listed on skylence.be.
+# Not a prompt: the value has to match what the site searches for.
+DISCOVERY_TOPIC="sky-workflow"
+
 say ""
 
 # ── tooling ───────────────────────────────────────────────────────────────────
@@ -217,14 +221,30 @@ if [ "$USE_LEFTHOOK" = "y" ]; then
   fi
 fi
 
+# ── discovery topic ──────────────────────────────────────────────────────────
+# skylence.be lists collections it can find, and its cheapest discovery path is
+# a GitHub topic search. Topics are NOT copied from a template repo (GitHub
+# copies files, not settings), so a fresh collection carries none until someone
+# sets this one. Best effort: the remote may not exist yet at this point.
+if command -v gh &>/dev/null && git remote get-url origin &>/dev/null; then
+  if gh repo edit --add-topic "$DISCOVERY_TOPIC" &>/dev/null; then
+    ok "Tagged the repo '${DISCOVERY_TOPIC}' so skylence.be can list it."
+  else
+    warn "Could not tag the repo — after pushing, run: gh repo edit --add-topic ${DISCOVERY_TOPIC}"
+  fi
+else
+  warn "No gh CLI or no remote yet — after pushing, run: gh repo edit --add-topic ${DISCOVERY_TOPIC}"
+fi
+
 say ""
 say "  $(bold 'Next steps')"
 say ""
 say "  1. $(bold "git add -A && git commit -m 'chore: configure skeleton'")"
 say "  2. Push to ${CYAN}https://github.com/${GITHUB_ORG}/${REPO_NAME}${RESET}"
-say "  3. Add workflows under $(bold "workflows/${VENDOR}/<name>/")"
-say "  4. Register each in $(bold 'manifest.yaml')"
-say "  5. Run $(bold "sky library add ${GITHUB_ORG}/${REPO_NAME}") to use them locally"
+say "  3. Tag it for discovery: $(bold "gh repo edit --add-topic ${DISCOVERY_TOPIC}")"
+say "  4. Add workflows under $(bold "workflows/${VENDOR}/<name>/")"
+say "  5. Register each in $(bold 'manifest.yaml')"
+say "  6. Run $(bold "sky library add ${GITHUB_ORG}/${REPO_NAME}") to use them locally"
 say ""
 
 confirm "Let this script delete itself?" "Y" && rm -- "$0" && ok "configure.sh deleted." || true
