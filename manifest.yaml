@@ -4,7 +4,7 @@ updated_at: "__today__"
 
 # ── Library metadata ──────────────────────────────────────────────────────────
 # Remove or customise the stores block. Each store groups entries by plugin and
-# lets `sky library` filter them. One store entry per logical category is enough.
+# lets `skyway library` filter them. One store entry per logical category is enough.
 #
 # stores:
 #   - name: __vendor__
@@ -12,7 +12,7 @@ updated_at: "__today__"
 #     description: "Short description of this category"
 
 # ── Entries ──────────────────────────────────────────────────────────────────
-# Each entry maps a workflow or skill file to a name that `sky` can reference.
+# Each entry maps a workflow or skill file to a name that `skyway` can reference.
 # Run `bash scripts/validate-manifest.sh` locally to check for drift.
 entries:
   - kind: workflow

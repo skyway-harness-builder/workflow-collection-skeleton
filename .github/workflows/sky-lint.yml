@@ -6,14 +6,14 @@ jobs:
   sky-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: skylence-be/sky-lint-action@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: skyway-harness-builder/lint-action@7a3fcc8510d4aef09a11b01abf71e29c54fbc926 # v2.0.1
         with:
           paths: "**/*.sky"
 
   manifest-validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Validate manifest.yaml
         run: bash scripts/validate-manifest.sh

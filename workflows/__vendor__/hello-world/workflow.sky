@@ -11,7 +11,7 @@ Starter workflow for **__vendor_name__**. Replace this with your first automatio
    └─────────┘
 
 Run:
-  sky run hello-world
+  skyway run hello-world
 ※※
 
 ⊕meta⊕
@@ -19,6 +19,7 @@ name = "hello-world"
 description = "Starter workflow — prints a greeting. Replace with your first real automation."
 trigger.manual = true
 output_style = "terse"
+ui = "ui/workflow"
 ⊕⊕
 
 ※※

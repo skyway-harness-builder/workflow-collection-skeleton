@@ -19,10 +19,10 @@ This is where your description should go. Limit it to a paragraph or two.
 
 ## Installation
 
-Install this workflow library via the `sky` CLI:
+Install this workflow library via the `skyway` CLI:
 
 ```bash
-sky library add __github_org__/__repo_name__
+skyway library add __github_org__/__repo_name__
 ```
 
 ### Getting listed
@@ -50,7 +50,7 @@ gh repo edit --add-topic sky-workflow
 Run a workflow:
 
 ```bash
-sky run hello-world
+skyway run hello-world
 ```
 
 ## Changelog

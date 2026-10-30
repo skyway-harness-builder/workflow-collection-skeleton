@@ -6,7 +6,7 @@ jobs:
   yaml-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Layer 1 (syntax) + Layer 2 (yamllint) — both run inside the script.
       # yamllint is pre-installed on ubuntu-latest; no install step needed.
       - name: YAML check
