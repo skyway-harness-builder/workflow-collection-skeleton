@@ -1,6 +1,6 @@
 # Pre-commit gate: fast local checks before code lands in git.
 #
-# Layer 1 — sky lint    : validates staged .sky workflow files
+# Layer 1 — skyway lint : validates staged .sky workflow files
 # Layer 2 — manifest    : checks manifest.yaml stays in sync with disk
 # Layer 3 — bash syntax : bash -n on staged shell scripts (syntax only)
 # Layer 4 — yaml check  : scripts/yaml-check.sh on staged YAML files
@@ -9,9 +9,9 @@
 # Full static analysis (shellcheck, yamllint) also runs in CI on every push.
 pre-commit:
   jobs:
-    - name: sky lint
+    - name: skyway lint
       glob: "**/*.sky"
-      run: sky lint {staged_files}
+      run: skyway lint {staged_files}
 
     - name: manifest validate
       glob: "manifest.yaml"

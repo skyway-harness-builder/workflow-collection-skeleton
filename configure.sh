@@ -20,7 +20,8 @@ warn() { say "  ${YELLOW}!${RESET} $*"; }
 
 ask() {
   local label="$1" default="$2" val
-  printf "  %s%s%s %s: " "$CYAN" "$label" "$RESET" "$(dim "(${default})")"
+  # The prompt goes to stderr: callers capture stdout, VAR=$(ask ...).
+  printf "  %s%s%s %s: " "$CYAN" "$label" "$RESET" "$(dim "(${default})")" >&2
   IFS= read -r val
   printf "%s" "${val:-$default}"
 }
@@ -244,7 +245,7 @@ say "  2. Push to ${CYAN}https://github.com/${GITHUB_ORG}/${REPO_NAME}${RESET}"
 say "  3. Tag it for discovery: $(bold "gh repo edit --add-topic ${DISCOVERY_TOPIC}")"
 say "  4. Add workflows under $(bold "workflows/${VENDOR}/<name>/")"
 say "  5. Register each in $(bold 'manifest.yaml')"
-say "  6. Run $(bold "sky library add ${GITHUB_ORG}/${REPO_NAME}") to use them locally"
+say "  6. Run $(bold "skyway library add ${GITHUB_ORG}/${REPO_NAME}") to use them locally"
 say ""
 
 confirm "Let this script delete itself?" "Y" && rm -- "$0" && ok "configure.sh deleted." || true

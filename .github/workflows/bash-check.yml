@@ -6,7 +6,7 @@ jobs:
   bash-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # Layer 1 — syntax: fast bash -n parse on every shell script
       - name: Syntax (bash -n)
@@ -16,6 +16,6 @@ jobs:
 
       # Layer 2 — lint: static analysis via shellcheck
       - name: Lint (shellcheck)
-        uses: ludeeus/action-shellcheck@master
+        uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
         with:
           scandir: '.'
